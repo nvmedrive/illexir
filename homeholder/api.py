@@ -19,7 +19,7 @@ def authenticate(username, password):
     return username in users and users[username] == password
       
 def send(username, host, port, time):
-    command = f"screen -S {username} -dm bash -c 'cd /root/homeholder && ./home {host} {port} {time} 7'"
+    command = f"screen -S {username} -dm bash -c 'cd /root/homeholder && ./home {host} {port} {time} 7'" 
     
     try:
         subprocess.run(command, shell=True, check=True)
@@ -40,7 +40,7 @@ def perform_attack():
         if host in blacklist:
             return jsonify({'status': 'error', 'message': 'Blacklisted target :( '})
         if send(username, host, port, time):
-            return jsonify({'status': f'Successfully Sent To {host} on port {port} for {time}! ✅'})
+            return jsonify({'status': f'Successfully Sent To {host} on port {port} for {time}! ✅'}) # shadow did this only but still fucked it up. he forgot to place the "f" infront and calls me a skid
         else:
             return jsonify({'status': 'error', 'message': 'User has an active attack'})
     else:
