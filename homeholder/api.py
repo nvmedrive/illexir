@@ -18,7 +18,7 @@ with open("auth.txt", "r") as file:
 def authenticate(username, password):
     return username in users and users[username] == password
       
-def send (username, host, port, time):
+def send(username, host, port, time):
     command = f"screen -S {username} -dm bash -c 'cd /root/homeholder && ./home {host} {port} {time} 7'"
     
     try:
